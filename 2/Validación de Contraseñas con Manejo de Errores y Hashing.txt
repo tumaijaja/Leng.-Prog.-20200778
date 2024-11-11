@@ -1,0 +1,46 @@
+Validación de Contraseñas con Manejo de Errores y Hashing
+Descripción:
+
+Implementa un sistema de validación de contraseñas que compruebe si una contraseña cumple ciertos criterios: debe tener al menos 8 caracteres, incluir letras mayúsculas, minúsculas, y al menos un número.
+Si la contraseña es válida, genera un hash utilizando el algoritmo MD5 (solo para efectos de este ejercicio).
+Si la contraseña no es válida, lanza un error personalizado.
+
+Instrucciones:
+
+Crea una función validar_contraseña() que acepte una contraseña como parámetro.
+Si la contraseña cumple con los requisitos, genera el hash usando hashlib.md5.
+Si no cumple los requisitos, lanza una excepción personalizada indicando el criterio que no se ha cumplido.
+Devuelve la contraseña hash si es válida o el error si no lo es
+
+import hashlib
+import re
+
+# Definición de la excepción personalizada
+class ContraseñaInvalidaError(Exception):
+    def _init_(self, mensaje):
+        super()._init_(mensaje)
+
+def validar_contraseña(contraseña):
+    """
+    Valida una contraseña según los siguientes criterios:
+    - Al menos 8 caracteres.
+    - Contiene al menos una letra mayúscula.
+    - Contiene al menos una letra minúscula.
+    - Contiene al menos un número.
+    
+    Si es válida, genera el hash MD5.
+    Si no, lanza una excepción personalizada indicando el criterio que no se ha cumplido.
+
+    Args:
+    contraseña (str): La contraseña a validar.
+
+    Returns:
+    str: Hash MD5 de la contraseña si es válida.
+    """
+    # Validar la longitud mínima
+    if len(contraseña) < 8:
+        raise ContraseñaInvalidaError("La contraseña debe tener al menos 8 caracteres.")
+
+    # Validar que contenga al menos una letra mayúscula
+    if not re.search(r"[A-Z]", contraseña):
+        raise ContraseñaIn

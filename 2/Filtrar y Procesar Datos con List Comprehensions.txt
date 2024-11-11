@@ -1,0 +1,46 @@
+ Filtrar y Procesar Datos con List Comprehensions
+Descripción:
+
+Se te proporciona una lista de nombres y una lista de números asociados a cada nombre.
+Tu tarea es filtrar los nombres que tienen más de 5 caracteres y elevar al cuadrado los números correspondientes, utilizando List Comprehensions.
+Luego, aplica una función hash SHA-1 al nombre y al número cuadrado concatenados en una cadena.
+
+Instrucciones:
+
+Crea dos listas: una con nombres y otra con números.
+Filtra los nombres que tienen más de 5 caracteres y aplica el cuadrado a los números correspondientes.
+Para cada nombre filtrado y número cuadrado, concaténalos en una cadena y aplica la función hash usando hashlib.sha1.
+Devuelve una lista de tuplas con el nombre, número cuadrado, y el valor hash.
+
+import hashlib
+
+# Listas de ejemplo
+nombres = ["Miguel", "Ana", "Jose", "Francisco", "Elena", "Fernando", "Maria", "Lucia"]
+numeros = [3, 5, 7, 2, 10, 12, 1, 8]
+
+def filtrar_y_procesar_nombres(nombres, numeros):
+    """
+    Filtra los nombres con más de 5 caracteres, eleva al cuadrado los números correspondientes,
+    y calcula el hash SHA-1 de la concatenación del nombre y el número cuadrado.
+
+    Args:
+    nombres (list): Lista de nombres.
+    numeros (list): Lista de números asociados a los nombres.
+
+    Returns:
+    list: Lista de tuplas con el nombre, el número cuadrado, y su hash SHA-1.
+    """
+    # Usar list comprehension para filtrar y procesar los datos
+    resultado = [
+        (nombre, numero * 2, hashlib.sha1(f"{nombre}{numero * 2}".encode()).hexdigest())
+        for nombre, numero in zip(nombres, numeros) if len(nombre) > 5
+    ]
+    
+    return resultado
+
+# Llamar a la función con las listas de ejemplo y mostrar el resultado
+resultado_procesado = filtrar_y_procesar_nombres(nombres, numeros)
+
+# Imprimir el resultado
+for nombre, numero_cuadrado, hash_value in resultado_procesado:
+    print(f"Nombre: {nombre}, Número Cuadrado: {numero_cuadrado}, Hash SHA-1: {hash_value}")
