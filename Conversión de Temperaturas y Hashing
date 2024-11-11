@@ -1,0 +1,55 @@
+Lenguaje de Programación: Conversión de Temperaturas y Hashing
+
+Descripción:
+
+Implementa una función que convierta temperaturas de Celsius a Fahrenheit y viceversa (como en el ejercicio anterior).
+Luego, aplica una función hash a la temperatura convertida usando la librería hashlib. Usa el algoritmo de hash SHA-256 para convertir la temperatura a un hash hexadecimal.
+
+Instrucciones:
+
+Crea una función convertir_temperatura() que acepte dos parámetros: el valor de la temperatura y la escala de entrada ('C' o 'F').
+Asegúrate de manejar posibles errores como una escala no válida (lanza una excepción ValueError si la escala no es 'C' o 'F').
+Después de realizar la conversión, convierte la temperatura a una cadena y aplica la función hash usando hashlib.sha256.
+Devuelve la temperatura convertida y su valor hash.
+
+import hashlib
+
+def convertir_temperatura(valor, escala):
+    """
+    Convierte temperaturas entre Celsius y Fahrenheit.
+    
+    Args:
+    valor (float): El valor de la temperatura a convertir.
+    escala (str): La escala de la temperatura de entrada, 'C' para Celsius o 'F' para Fahrenheit.
+    
+    Returns:
+    tuple: Una tupla con la temperatura convertida y su valor hash en hexadecimal.
+    """
+    
+    # Verificar la escala de entrada
+    if escala not in ['C', 'F']:
+        raise ValueError("Escala no válida. Use 'C' para Celsius o 'F' para Fahrenheit.")
+    
+    # Convertir de Celsius a Fahrenheit
+    if escala == 'C':
+        temperatura_convertida = (valor * 9/5) + 32
+        escala_convertida = 'F'
+    # Convertir de Fahrenheit a Celsius
+    elif escala == 'F':
+        temperatura_convertida = (valor - 32) * 5/9
+        escala_convertida = 'C'
+    
+    # Convertir la temperatura a cadena
+    temperatura_str = f"{temperatura_convertida:.2f}{escala_convertida}"
+    
+    # Calcular el hash SHA-256
+    hash_obj = hashlib.sha256(temperatura_str.encode())
+    hash_hex = hash_obj.hexdigest()
+    
+    # Retornar la temperatura convertida y su hash
+    return temperatura_convertida, hash_hex
+
+# Ejemplo de uso
+temperatura, hash_temperatura = convertir_temperatura(25, 'C')
+print(f"Temperatura convertida: {temperatura} F")
+print(f"Hash de la temperatura: {hash_temperatura}")
