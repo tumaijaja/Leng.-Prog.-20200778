@@ -1,0 +1,14 @@
+import pandas as pd
+
+def filtrar_ventas_mayores_a_500(ruta_archivo_csv):
+    # Leer el archivo CSV y guardarlo en un DataFrame
+    datos = pd.read_csv(ruta_archivo_csv)
+    
+    # Filtrar las filas donde las ventas son mayores a 500
+    ventas_mayores = datos[datos['Ventas'] > 500]
+    
+    # Mostrar el resultado
+    print(ventas_mayores)
+
+# Llamar a la función con la ruta del archivo
+filtrar_ventas_mayores_a_500('S3/Enmanuel.csv')
