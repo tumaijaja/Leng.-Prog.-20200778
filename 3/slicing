@@ -1,0 +1,19 @@
+import numpy as np
+
+def sumar_primera_columna():
+    # Crear un arreglo de 3x3 con números aleatorios entre 0 y 100
+    matriz = np.random.randint(0, 101, size=(3, 3))
+    
+    # Seleccionar la primera columna de la matriz
+    primera_columna = matriz[:, 0]
+    
+    # Sumar los valores de la primera columna
+    suma_columna = np.sum(primera_columna)
+    
+    # Mostrar la matriz completa y la suma de la primera columna
+    print("Matriz generada:")
+    print(matriz)
+    print("Suma de la primera columna:", suma_columna)
+
+# Llamar a la función
+sumar_primera_columna()
