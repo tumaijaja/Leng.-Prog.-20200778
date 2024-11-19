@@ -1,0 +1,24 @@
+import pandas as pd
+
+def agregar_columna_mayor_de_edad():
+    # Crear un diccionario con los datos
+    datos = {'Nombre': ['Ana', 'Juan', 'Maria', 'Pedro'], 'Edad': [25, 17, 30, 19]}
+    
+    # Convertir el diccionario en un DataFrame
+    df = pd.DataFrame(datos)
+    
+    # Función para verificar si una persona es mayor de edad
+    def es_mayor_de_edad(edad):
+        if edad >= 18:
+            return "si"
+        else:
+            return "no"
+    
+    # Aplicar la función a la columna 'Edad' y crear una nueva columna
+    df['Mayor_de_edad'] = df['Edad'].apply(es_mayor_de_edad)
+    
+    # Imprimir el DataFrame resultante
+    print(df)
+
+# Llamar a la función
+agregar_columna_mayor_de_edad()
