@@ -1,0 +1,22 @@
+import pandas as pd
+
+def calcular_promedios():
+    # Crear un diccionario con los datos de los estudiantes y sus notas
+    datos = {
+        'Estudiante': ['juan', 'pedro', 'enmanuel', 'jose'],
+        'Matematicas': [85, 92, 78, 95],
+        'Naturales': [90, 88, 92, 89],
+        'Sociales': [75, 80, 85, 90]
+    }
+    
+    # Convertir el diccionario en un DataFrame
+    df = pd.DataFrame(datos)
+    
+    # Calcular el promedio de las materias para cada estudiante
+    df['Promedio'] = (df['Matematicas'] + df['Naturales'] + df['Sociales']) / 3
+    
+    # Imprimir el DataFrame con los promedios agregados
+    print(df)
+
+# Llamar a la función para ejecutarla
+calcular_promedios()
