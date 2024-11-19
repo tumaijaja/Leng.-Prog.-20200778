@@ -1,0 +1,18 @@
+import numpy as np
+
+def multiplicar_promedio():
+    # Crear un arreglo con números del 1 al 10
+    numeros = np.arange(1, 11)
+    
+    # Multiplicar cada número por 2
+    numeros = numeros * 2
+    
+    # Calcular el promedio del arreglo
+    promedio = numeros.mean()
+    
+    # Mostrar el arreglo y el promedio
+    print("Arreglo multiplicado:", numeros)
+    print("Promedio del arreglo:", promedio)
+
+# Llamar a la función
+multiplicar_promedio()
